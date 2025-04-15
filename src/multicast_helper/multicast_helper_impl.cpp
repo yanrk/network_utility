@@ -371,7 +371,7 @@ void MulticastHelperImpl::handle_data()
             std::string data;
             if (unpack_message(message, data))
             {
-                m_multicast_recver->accept_shared_device(m_multicast_group_host, m_multicast_group_port, address, data);
+                m_multicast_recver->recv_multicast_data(m_multicast_group_host, m_multicast_group_port, address, data);
             }
         }
     }

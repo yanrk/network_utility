@@ -11,14 +11,14 @@ macro                       =
 
 
 # sysroot
-sysroot_home               ?= /home/toolchain/sysroot
+sysroot_home               ?= /
 sysroot_params              = --sysroot=$(sysroot_home)
 sysroot_includes            = -I$(sysroot_home)
 
 
 
 # toolchain
-build_cmd_prefix           ?= /home/toolchain/gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-
+build_cmd_prefix           ?= /usr/bin/
 build_c                     = $(build_cmd_prefix)gcc $(sysroot_params) $(macro)
 build_cxx                   = $(build_cmd_prefix)g++ $(sysroot_params) $(macro) -std=c++14
 build_link                  = $(build_cmd_prefix)ar

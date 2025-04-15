@@ -13,10 +13,20 @@
 #include <cstdint>
 #include <string>
 
+/*--------------------------------------------------------------------------------------
+ |                         The Class D range is split like this                        |
+ --------------------------------------------------------------------------------------|
+ |                       Description                     |             Range           |
+ |-------------------------------------------------------|-----------------------------|
+ | Reserved for special (well-known) multicast addresses | 224.0.0.0 - 224.0.0.255     |
+ | Globally-scoped (Internet-wide) multicast addresses   | 224.0.1.0 - 238.255.255.255 |
+ | Administratively-scoped (local) multicast addresses   | 239.0.0.0 - 239.255.255.255 |
+ --------------------------------------------------------------------------------------*/
+
 struct MulticastRecver
 {
     ~MulticastRecver();
-    virtual void accept_shared_device(const std::string & multicast_group_host, uint16_t multicast_group_port, const std::string & address, const std::string & data) = 0;
+    virtual void recv_multicast_data(const std::string & multicast_group_host, uint16_t multicast_group_port, const std::string & address, const std::string & data) = 0;
 };
 
 class MulticastHelperImpl;
