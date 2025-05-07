@@ -10,6 +10,7 @@
 #define HTTP_CLIENT_H
 
 
+#include <cstdint>
 #include <map>
 #include <string>
 #include <functional>

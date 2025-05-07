@@ -4,7 +4,6 @@ project_name               := $(shell basename "$(CURDIR)")
 
 
 # arguments
-runlink                    ?= static
 platform                   ?= centos
 macro                       =
 
@@ -28,7 +27,7 @@ build_link                  = $(build_cmd_prefix)ar
 # paths home
 project_home                = .
 build_dir                   = $(project_home)
-bin_dir                     = $(project_home)/../../lib
+bin_dir                     = $(project_home)
 object_dir                  = $(project_home)/.objs
 system_inc                  = $(sysroot_home)/usr/include
 system_lib                  = $(sysroot_home)/usr/lib/aarch64-linux-gnu
@@ -39,6 +38,10 @@ system_lib                  = $(sysroot_home)/usr/lib/aarch64-linux-gnu
 project_inc_path            = $(project_home)
 project_includes            = -I$(project_inc_path)
 
+# includes of depends headers
+depends_inc_path            = $(project_home)/../../include
+depends_includes            = -I$(depends_inc_path)
+
 # includes of system headers
 sys_inc_path                = $(system_inc)
 sys_includes                = -I$(sys_inc_path)
@@ -47,6 +50,7 @@ sys_includes                = -I$(sys_inc_path)
 
 # all includes that project solution needs
 includes                    = $(project_includes)
+includes                   += $(depends_includes)
 includes                   += $(sys_includes)
 
 
@@ -68,23 +72,22 @@ project_objects            += $(project_c_source:$(project_home)%.c=$(object_dir
 
 # system libraries
 sys_lib_path                = $(system_lib)
-sys_libs                    = -L$(sys_lib_path) -lpthread -ldl -lrt
+sys_libs                    = -L$(sys_lib_path) -lcrypto -lpthread -ldl -lrt
+
+# depend libraries
+dep_lib_path                = $(project_home)/../../lib
+dep_libs                    = -L$(dep_lib_path) -lstring_codec
 
 
 
 # project depends libraries
-project_depends             = $(sys_libs)
+project_depends             = $(dep_libs)
+project_depends            += $(sys_libs)
 
 
 
-# output libraries
-ifeq ($(runlink), static)
-	project_outputs = $(bin_dir)/lib$(project_name).a
-else ifeq ($(platform), mac)
-	project_outputs = $(bin_dir)/lib$(project_name).dylib
-else
-	project_outputs = $(bin_dir)/lib$(project_name).so
-endif
+# output binary
+project_outputs             = $(bin_dir)/$(project_name)
 
 
 
@@ -100,11 +103,7 @@ endif
 
 
 # build output command line
-ifeq ($(runlink), static)
-	build_command = $(build_link) -rv $(project_outputs) $^
-else
-	build_command = $(build_cxx) -shared -o $(project_outputs) $^ $(project_depends)
-endif
+build_command   = $(build_cxx) -g -Wall -O1 -pipe -fPIC -o $(project_outputs) $^ $(project_depends)
 
 
 
@@ -145,8 +144,6 @@ $(object_dir)/%.o:$(project_home)/%.c
 	$(build_c) -c -g -O1 -pipe -fPIC $(c_no_warnings) $(includes) -o $@ $<
 
 clean    :
-	rm -rf $(object_dir) $(bin_dir)/lib$(project_name).*
+	rm -rf $(object_dir) $(project_outputs)
 
 rebuild  : clean build
-
-install  :
