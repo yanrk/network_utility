@@ -11,14 +11,15 @@
 
 
 #include "json.hpp"
+#include "macros.h"
 
 using json_t = nlohmann::json;
 
-void string_to_json(const std::string & str, json_t & json);
+GOOFER_CXX_API(void) string_to_json(const std::string & str, json_t & json);
 
-void json_to_string(const json_t & json, std::string & str);
+GOOFER_CXX_API(void) json_to_string(const json_t & json, std::string & str);
 
-void get_member_map(const json_t & json, std::map<std::string, json_t> & mem_map);
+GOOFER_CXX_API(void) get_member_map(const json_t & json, std::map<std::string, json_t> & mem_map);
 
 template <typename T>
 void get_member_vector(const json_t & json, std::vector<T> & mem_vec)
@@ -51,7 +52,7 @@ bool parse_element(const json_t & json, const char * name, T & value)
     return true;
 }
 
-bool parse_element(const json_t & json, const char * name, json_t & value);
+GOOFER_CXX_API(bool) parse_element(const json_t & json, const char * name, json_t & value);
 
 template <typename T>
 bool build_element(json_t & json, const char * name, const T & value)
@@ -66,7 +67,7 @@ bool build_element(json_t & json, const char * name, const T & value)
     return true;
 }
 
-bool build_element(json_t & json, const char * name, const char * value);
+GOOFER_CXX_API(bool) build_element(json_t & json, const char * name, const char * value);
 
 
 #endif // JSON_HELPER_H
