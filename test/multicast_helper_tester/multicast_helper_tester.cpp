@@ -51,10 +51,10 @@ int main(int argc, char * argv[])
 
     if (need_send)
     {
-        multicast_helper.send_data(MULTICAST_GROUP_DATA);
+        multicast_helper.send_multicast_data(MULTICAST_GROUP_DATA);
         printf("send multicast data, multicast: (%s:%u), data: (%s)\n", MULTICAST_GROUP_HOST, MULTICAST_GROUP_PORT, MULTICAST_GROUP_DATA);
     }
-   
+
     for (int i = 0; i < 3; ++i)
     {
         getchar();

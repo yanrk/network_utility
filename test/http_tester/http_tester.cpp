@@ -213,14 +213,11 @@ private:
     sample_2_t              m_rsp;
 };
 
-
 void test1()
 {
     bool done = false;
-    std::string host("baidu.com");
-    std::string uri("/index.html");
     HttpClient client;
-    client.get(host, uri, [&](bool result, const std::string & response){
+    client.get("https://example.com/index.html", [&](bool result, const std::string & response){
         printf("http get request: result %s, response (%s)\n", (result ? "success" : "failure"), response.c_str());
         done = true;
     });
