@@ -3,7 +3,6 @@
  @brief ENet packet management functions
 */
 #include <string.h>
-#define ENET_BUILDING_LIB 1
 #include "enet.h"
 
 /** @defgroup Packet ENet packet functions 

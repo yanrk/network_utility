@@ -4,7 +4,6 @@
 */
 #include <stdio.h>
 #include <string.h>
-#define ENET_BUILDING_LIB 1
 #include "utility.h"
 #include "times.h"
 #include "enet.h"

@@ -13,8 +13,9 @@
 
 #include <cstdint>
 #include <string>
+#include "macros.h"
 
-struct EnetClientSink
+struct GOOFER_API EnetClientSink
 {
     virtual ~EnetClientSink();
     virtual void on_enet_connect(const void * user_data) = 0;
@@ -25,7 +26,7 @@ struct EnetClientSink
 
 class EnetClientImpl;
 
-class EnetClient
+class GOOFER_API EnetClient
 {
 public:
     EnetClient(const void * user_data);
