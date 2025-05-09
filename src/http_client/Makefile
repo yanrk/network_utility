@@ -180,7 +180,6 @@ install  :
 		mkdir -p $(install_dir);		\
 	fi
 	cp -f $(project_inc_path)/$(project_name).h $(install_dir)/
-	cp -f $(project_inc_path)/http_manager.h $(install_dir)/
 	cp -f $(httplib_inc_path)/httplib.h $(install_dir)/
 	cp -f $(singleton_inc_path)/singleton.hpp $(install_dir)/
 	cp -f $(task_actuator_inc_path)/task_actuator.hpp $(install_dir)/

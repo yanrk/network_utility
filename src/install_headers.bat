@@ -1,0 +1,19 @@
+mkdir ..\include
+copy base\base.h ..\include
+copy base\macros.h ..\include
+copy enet_client\enet_client.h ..\include
+copy etcp_client\etcp_client.h ..\include
+copy etcp_server\etcp_server.h ..\include
+copy http_client\http_client.h ..\include
+copy http_request\http_request.h ..\include
+copy httplib\httplib.h ..\include
+copy json\json.hpp ..\include
+copy json_helper\json_helper.h ..\include
+copy multicast_helper\multicast_helper.h ..\include
+copy singleton\singleton.hpp ..\include
+copy string_codec\string_codec.h ..\include
+copy task_actuator\task_actuator.hpp ..\include
+copy tcp_forward_server\tcp_forward_server.h ..\include
+copy tcp_gateway_server\tcp_gateway_server.h ..\include
+copy websocket_client\websocket_client.h ..\include
+copy wutnet_client\wutnet_client.h ..\include
