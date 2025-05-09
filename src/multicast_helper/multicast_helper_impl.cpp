@@ -277,7 +277,7 @@ void MulticastHelperImpl::do_send()
     });
 }
 
-bool MulticastHelperImpl::send_data(const std::string & data)
+bool MulticastHelperImpl::send_multicast_data(const std::string & data)
 {
     if (!m_running || data.empty())
     {

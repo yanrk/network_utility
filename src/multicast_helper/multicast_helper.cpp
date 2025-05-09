@@ -60,7 +60,7 @@ void MulticastHelper::exit()
     }
 }
 
-bool MulticastHelper::send_data(const std::string & data)
+bool MulticastHelper::send_multicast_data(const std::string & data)
 {
-    return nullptr != m_impl && m_impl->send_data(data);
+    return nullptr != m_impl && m_impl->send_multicast_data(data);
 }

@@ -30,7 +30,7 @@ public:
     void exit();
 
 public:
-    bool send_data(const std::string & data);
+    bool send_multicast_data(const std::string & data);
 
 private:
     void handle_data();

@@ -12,6 +12,7 @@
 
 #include <cstdint>
 #include <string>
+#include "macros.h"
 
 /*--------------------------------------------------------------------------------------
  |                         The Class D range is split like this                        |
@@ -23,7 +24,7 @@
  | Administratively-scoped (local) multicast addresses   | 239.0.0.0 - 239.255.255.255 |
  --------------------------------------------------------------------------------------*/
 
-struct MulticastRecver
+struct GOOFER_API MulticastRecver
 {
     ~MulticastRecver();
     virtual void recv_multicast_data(const std::string & multicast_group_host, uint16_t multicast_group_port, const std::string & address, const std::string & data) = 0;
@@ -31,7 +32,7 @@ struct MulticastRecver
 
 class MulticastHelperImpl;
 
-class MulticastHelper
+class GOOFER_API MulticastHelper
 {
 public:
     MulticastHelper();
@@ -42,7 +43,7 @@ public:
     void exit();
 
 public:
-    bool send_data(const std::string & data);
+    bool send_multicast_data(const std::string & data);
 
 private:
     MulticastHelper(const MulticastHelper &) = delete;
