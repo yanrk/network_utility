@@ -12,8 +12,9 @@
 
 #include <cstdint>
 #include <string>
+#include "macros.h"
 
-struct EtcpClientSink
+struct GOOFER_API EtcpClientSink
 {
     virtual ~EtcpClientSink();
     virtual void on_etcp_connect(const void * user_data) = 0;
@@ -24,7 +25,7 @@ struct EtcpClientSink
 
 class EtcpClientImpl;
 
-class EtcpClient
+class GOOFER_API EtcpClient
 {
 public:
     EtcpClient(const void * user_data);

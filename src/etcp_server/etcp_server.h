@@ -13,8 +13,9 @@
 #include <cstdint>
 #include <string>
 #include <memory>
+#include "macros.h"
 
-class EtcpConnection
+class GOOFER_API EtcpConnection
 {
 public:
     EtcpConnection();
@@ -40,7 +41,7 @@ private:
 typedef std::shared_ptr<EtcpConnection> EtcpConnectionSharedPtr;
 typedef std::weak_ptr<EtcpConnection> EtcpConnectionWeakPtr;
 
-struct EtcpServerSink
+struct GOOFER_API EtcpServerSink
 {
     virtual ~EtcpServerSink();
     virtual void on_etcp_accept(EtcpConnectionSharedPtr connection) = 0;
@@ -51,7 +52,7 @@ struct EtcpServerSink
 
 class EtcpServerImpl;
 
-class EtcpServer
+class GOOFER_API EtcpServer
 {
 public:
     EtcpServer();

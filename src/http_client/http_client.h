@@ -14,8 +14,9 @@
 #include <map>
 #include <string>
 #include <functional>
+#include "macros.h"
 
-class HttpClient
+class GOOFER_API HttpClient
 {
 public:
     void parse(const std::string & url, std::string & scheme, std::string & target);
