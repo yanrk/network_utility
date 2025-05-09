@@ -11,10 +11,11 @@
 
 
 #include <cstdint>
+#include "macros.h"
 
 class TcpGatewayServerImpl;
 
-class TcpGatewayServer
+class GOOFER_API TcpGatewayServer
 {
 public:
     TcpGatewayServer();

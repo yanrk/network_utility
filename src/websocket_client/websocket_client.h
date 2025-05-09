@@ -12,8 +12,9 @@
 
 #include <cstdint>
 #include <string>
+#include "macros.h"
 
-struct WebsocketClientSink
+struct GOOFER_API WebsocketClientSink
 {
     virtual ~WebsocketClientSink();
     virtual void on_websocket_connect(const void * user_data) = 0;
@@ -24,7 +25,7 @@ struct WebsocketClientSink
 
 class WebsocketSessionBase;
 
-class WebsocketClient
+class GOOFER_API WebsocketClient
 {
 public:
     WebsocketClient(const void * user_data);

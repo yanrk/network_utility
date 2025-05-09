@@ -11,10 +11,11 @@
 
 
 #include <cstdint>
+#include "macros.h"
 
 class TcpForwardServerImpl;
 
-class TcpForwardServer
+class GOOFER_API TcpForwardServer
 {
 public:
     TcpForwardServer();

@@ -12,6 +12,7 @@
 
 #include <cstdint>
 #include <string>
+#include "macros.h"
 
 enum class wutnet_type_t : uint8_t
 {
@@ -20,7 +21,7 @@ enum class wutnet_type_t : uint8_t
     wutnet_on_etcp
 };
 
-struct WutnetSink
+struct GOOFER_API WutnetSink
 {
     virtual ~WutnetSink();
     virtual void on_connect(const char * protocol, const void * user_data) = 0;
@@ -31,7 +32,7 @@ struct WutnetSink
 
 class WutnetClientImpl;
 
-class WutnetClient
+class GOOFER_API WutnetClient
 {
 public:
     WutnetClient();
