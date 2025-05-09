@@ -29,24 +29,29 @@ void HttpRequest::build_request(std::string & request);
 
 }
 
-void HttpRequest::parse_response(const std::string & response)
+void HttpRequest::parse_response(const std::string & response, std::string & error)
 {
 
 }
 
 void HttpRequest::send_request()
 {
+    std::string url("https://example.com/");
+    std::string scheme;
+    std::string target;
+    parse(url, scheme, target);
     std::string request;
     build_request(request);
     HttpClient http_client;
-    http_client.post(request, std::bind(&HttpRequest::handle_response, this, std::placeholders::_1, std::placeholders::_2));
+    http_client.post(scheme, target, request, std::bind(&HttpRequest::handle_response, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 void HttpRequest::handle_response(bool result, const std::string & response)
 {
     if (result)
     {
-        parse_response(response);
+        std::string error;
+        parse_response(response, error);
     }
 }
 */

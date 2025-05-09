@@ -12,8 +12,9 @@
 
 
 #include <string>
+#include "macros.h"
 
-class HttpRequest
+class GOOFER_API HttpRequest
 {
 public:
     HttpRequest();
@@ -24,7 +25,7 @@ public:
 
 private:
     virtual void build_request(std::string & request) = 0;
-    virtual void parse_response(const std::string & response, std::string & err_code) = 0;
+    virtual void parse_response(const std::string & response, std::string & error) = 0;
     virtual void send_request() = 0;
     virtual void handle_response(bool result, const std::string & response) = 0;
 };
